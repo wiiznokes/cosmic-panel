@@ -57,7 +57,7 @@ use smithay::{
     reexports::wayland_server::{
         self, protocol::wl_surface::WlSurface as s_WlSurface, DisplayHandle, Resource,
     },
-    utils::{Logical, Rectangle, Size},
+    utils::{Logical, Point, Rectangle, Scale, Size},
     wayland::{
         compositor::{with_states, SurfaceAttributes},
         fractional_scale::with_fractional_scale,
@@ -918,7 +918,9 @@ impl WrapperSpace for PanelSpace {
                         size.h = size.h.min(configured_size.h as f64);
                     }
                 }
-                let bbox = Rectangle::from_loc_and_size(location.to_f64(), size);
+                let mut bbox = Rectangle::from_loc_and_size(location.to_f64(), size);
+               
+                bbox = downscale_and_keep_centered(bbox, 1.5);
                 if bbox.contains((x as f64, y as f64)) {
                     SpaceTarget::try_from(e.clone()).ok().map(|s| (e.clone(), location, s))
                 } else {
@@ -1593,4 +1595,37 @@ impl WrapperSpace for PanelSpace {
     ) {
         // TODO handle the preferred transform
     }
+}
+
+
+#[inline]
+fn downscale_and_keep_centered(r: Rectangle<f64, Logical>, scale_factor: f64) -> Rectangle<f64, Logical> {
+
+    let new_width = r.size.w / scale_factor;
+    let new_height = r.size.h / scale_factor;
+
+    let new_loc_x = r.loc.x + (r.size.w - new_width) / 2.0;
+    let new_loc_y = r.loc.y + (r.size.h - new_height) / 2.0;
+    
+    Rectangle {
+        loc: Point::from((new_loc_x, new_loc_y)),
+        size: Size::from((new_width, new_height)),
+    }
+}
+
+#[test]
+fn a() {
+
+    let p: Point<f64, Logical> = Point::from((1., 1.));
+    let s = Size::from((1., 1.));
+
+    let mut r = Rectangle::from_loc_and_size(p, s);
+
+    dbg!(&r);
+
+    let scale = Scale::from(2.);
+
+    r = r.downscale(scale);
+
+    dbg!(&r);
 }
