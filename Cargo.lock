@@ -397,6 +397,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "bon"
+version = "2.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97493a391b4b18ee918675fb8663e53646fd09321c58b46afa04e8ce2499c869"
+dependencies = [
+ "bon-macros",
+ "rustversion",
+]
+
+[[package]]
+name = "bon-macros"
+version = "2.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a2af3eac944c12cdf4423eab70d310da0a8e5851a18ffb192c0a5e3f7ae1663"
+dependencies = [
+ "darling",
+ "ident_case",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.72",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -642,6 +665,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "configurator_schema"
+version = "0.1.0"
+source = "git+https://github.com/cosmic-utils/configurator.git#9fdfb87263542f8477b0c89c7ac8f5f91525f309"
+dependencies = [
+ "bon",
+ "configurator_utils",
+ "schemars",
+ "serde_json",
+]
+
+[[package]]
+name = "configurator_utils"
+version = "0.1.0"
+source = "git+https://github.com/cosmic-utils/configurator.git#9fdfb87263542f8477b0c89c7ac8f5f91525f309"
+dependencies = [
+ "anyhow",
+]
+
+[[package]]
 name = "const-random"
 version = "0.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -803,6 +845,7 @@ name = "cosmic-panel-config"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "configurator_schema",
  "cosmic-config",
  "ron",
  "serde",
@@ -1174,6 +1217,12 @@ dependencies = [
  "libc",
  "linux-raw-sys 0.6.5",
 ]
+
+[[package]]
+name = "dyn-clone"
+version = "1.0.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0d6ef0072f8a535281e4876be788938b528e9a1d43900b82c2569af7da799125"
 
 [[package]]
 name = "either"
@@ -1795,6 +1844,12 @@ dependencies = [
  "cfg-if",
  "crunchy",
 ]
+
+[[package]]
+name = "hashbrown"
+version = "0.12.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
 
 [[package]]
 name = "hashbrown"
@@ -2615,7 +2670,7 @@ dependencies = [
  "cfg_aliases 0.1.1",
  "codespan-reporting",
  "hexf-parse",
- "indexmap",
+ "indexmap 2.3.0",
  "log",
  "rustc-hash 1.1.0",
  "spirv",
@@ -3525,7 +3580,7 @@ version = "1.0.132"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d726bfaff4b320266d395898905d0eba0345aae23b54aee3a737e260fd46db03"
 dependencies = [
- "indexmap",
+ "indexmap 2.3.0",
  "itoa",
  "memchr",
  "ryu",
@@ -4075,7 +4130,7 @@ version = "0.22.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4ae48d6208a266e853d946088ed816055e556cc6028c5e8e2b84d9fa5dd7c7f5"
 dependencies = [
- "indexmap",
+ "indexmap 2.3.0",
  "toml_datetime",
  "winnow",
 ]
@@ -4982,6 +5037,7 @@ dependencies = [
 name = "xdg-shell-wrapper-config"
 version = "0.1.0"
 dependencies = [
+ "configurator_schema",
  "serde",
  "wayland-protocols-wlr",
 ]

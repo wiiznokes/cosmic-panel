@@ -1,5 +1,6 @@
 //! Config for cosmic-panel
-
+#[cfg(feature = "schema")]
+use configurator_schema::schemars;
 use std::{fmt::Display, ops::Range, str::FromStr, time::Duration};
 
 use anyhow::bail;
@@ -17,6 +18,7 @@ use crate::{NAME, VERSION};
 #[derive(Debug, Deserialize, Serialize, Copy, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 #[derive(Default)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub enum PanelAnchor {
     /// anchored to left edge
     Left,
@@ -121,6 +123,7 @@ impl From<PanelAnchor> for Anchor {
 /// Configurable size for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub enum PanelSize {
     /// XS
     XS,
@@ -211,6 +214,7 @@ impl FromStr for PanelSize {
 /// configurable backgrounds for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq)]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub enum CosmicPanelBackground {
     /// theme default color with optional transparency
     ThemeDefault,
@@ -226,6 +230,7 @@ pub enum CosmicPanelBackground {
 /// configurable autohide behavior
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub struct AutoHide {
     /// time in milliseconds without pointer focus before hiding
     pub wait_time: u32,
@@ -245,6 +250,7 @@ impl Default for AutoHide {
 /// Configuration for the panel's ouput
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub enum CosmicPanelOuput {
     /// show panel on all outputs
     All,
@@ -296,6 +302,7 @@ impl From<CosmicPanelOuput> for WrapperOutput {
 #[derive(Debug, Deserialize, Serialize, Clone, CosmicConfigEntry)]
 #[version = 1]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub struct CosmicPanelConfig {
     /// profile name for this config, should be unique
     pub name: String,
