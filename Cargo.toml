@@ -20,6 +20,7 @@ sctk = { package = "smithay-client-toolkit", version = "0.19.2", features = [
     "calloop",
     "xkbcommon",
 ] }
+configurator_schema = { git = "https://github.com/cosmic-utils/configurator.git" }
 
 [patch."https://github.com/Smithay/client-toolkit"]
 sctk = { package = "smithay-client-toolkit", version = "0.19.2", features = [

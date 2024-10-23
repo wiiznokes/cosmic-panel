@@ -3,6 +3,10 @@ name = "xdg-shell-wrapper-config"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+schema = ["configurator_schema"]
+
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 wayland-protocols-wlr = { version = "0.3.1", features = ["client"] }
+configurator_schema = { workspace = true, optional = true }

@@ -1,3 +1,5 @@
+#[cfg(feature = "schema")]
+use configurator_schema::schemars;
 use crate::{CosmicPanelBackground, CosmicPanelConfig, CosmicPanelOuput};
 use cosmic_config::{Config, ConfigGet, ConfigSet, CosmicConfigEntry};
 use serde::{Deserialize, Serialize};
@@ -7,6 +9,7 @@ use xdg_shell_wrapper_config::{Layer, WrapperConfig, WrapperOutput};
 /// Config structure for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone)]
 #[serde(deny_unknown_fields)]
+#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 pub struct CosmicPanelContainerConfig {
     pub config_list: Vec<CosmicPanelConfig>,
 }
