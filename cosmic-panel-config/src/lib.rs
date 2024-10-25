@@ -18,7 +18,7 @@ fn gen_schema() {
             .write_path(&format!("/home/fedasus/SSD/Documents/configurator/configurator/test_configs/{}", appid))
             .call()
             .unwrap();
-        std::fs::write(&format!("../../configurator/configurator/test_schemas/{}.json", appid), &string).unwrap();
+        std::fs::write(&format!("../../configurator/cosmic_compat/schemas/{}.json", appid), &string).unwrap();
     }
 
     let appid = "com.system76.CosmicPanel.Dock";
