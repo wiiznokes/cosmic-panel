@@ -10,6 +10,7 @@ use xdg_shell_wrapper_config::{Layer, WrapperConfig, WrapperOutput};
 #[derive(Debug, Deserialize, Serialize, Clone)]
 #[serde(deny_unknown_fields)]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(default)]
 pub struct CosmicPanelContainerConfig {
     pub config_list: Vec<CosmicPanelConfig>,
 }

@@ -15,9 +15,10 @@ fn gen_schema() {
             .format(configurator_schema::ConfigFormat::CosmicRon)
             .source_home_path(&format!(".config/cosmic/{}/v{}", appid, version))
             .source_paths(&[&format!("/usr/share/cosmic/{}/v{}", appid, version)])
+            .write_path(&format!("/home/fedasus/SSD/Documents/configurator/configurator/test_configs/{}", appid))
             .call()
             .unwrap();
-        std::fs::write(&format!("../../schemas/{}.json", appid), &string).unwrap();
+        std::fs::write(&format!("../../configurator/configurator/test_schemas/{}.json", appid), &string).unwrap();
     }
 
     let appid = "com.system76.CosmicPanel.Dock";

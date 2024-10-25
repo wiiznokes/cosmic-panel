@@ -231,6 +231,7 @@ pub enum CosmicPanelBackground {
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(default)]
 pub struct AutoHide {
     /// time in milliseconds without pointer focus before hiding
     pub wait_time: u32,
@@ -303,6 +304,7 @@ impl From<CosmicPanelOuput> for WrapperOutput {
 #[version = 1]
 #[serde(deny_unknown_fields)]
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+#[serde(default)]
 pub struct CosmicPanelConfig {
     /// profile name for this config, should be unique
     pub name: String,
