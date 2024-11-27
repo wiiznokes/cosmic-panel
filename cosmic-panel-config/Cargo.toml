@@ -6,6 +6,7 @@ edition = "2021"
 [features]
 default = ["wayland-rs"]
 wayland-rs = ["wayland-protocols-wlr", "xdg-shell-wrapper-config", "sctk"]
+schema = ["configurator_schema", "xdg-shell-wrapper-config/schema"]
 [dependencies]
 anyhow = "1.0.68"
 ron = "0.8.0"
@@ -20,3 +21,4 @@ xdg-shell-wrapper-config = { path = "../xdg-shell-wrapper-config", optional = tr
 # xdg-shell-wrapper-config = { git = "https://github.com/pop-os/xdg-shell-wrapper", optional = true }
 sctk.workspace = true
 sctk.optional = true
+configurator_schema = { workspace = true, optional = true }
