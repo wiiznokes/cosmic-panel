@@ -292,6 +292,7 @@ const fn _default_true() -> bool {
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 #[derive(rust_schema2::RustSchema)]
+#[serde(default)]
 pub struct AutoHide {
     /// time in milliseconds without pointer focus before hiding
     pub wait_time: u32,
@@ -371,6 +372,7 @@ impl From<CosmicPanelOuput> for WrapperOutput {
 #[derive(rust_schema2::RustSchema)]
 #[version = 1]
 #[serde(deny_unknown_fields)]
+#[serde(default)]
 pub struct CosmicPanelConfig {
     /// profile name for this config, should be unique
     pub name: String,
