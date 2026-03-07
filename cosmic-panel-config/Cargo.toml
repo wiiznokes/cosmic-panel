@@ -2,6 +2,11 @@
 name = "cosmic-panel-config"
 version = "0.1.0"
 edition = "2024"
+
+[[bin]]
+name = "gen_schema"
+path = "src/gen_schema.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [features]
 default = ["wayland-rs"]
@@ -19,3 +24,4 @@ xdg-shell-wrapper-config = { path = "../xdg-shell-wrapper-config", optional = tr
 # xdg-shell-wrapper-config = { git = "https://github.com/pop-os/xdg-shell-wrapper", optional = true }
 sctk.workspace = true
 sctk.optional = true
+configurator_schema.workspace = true

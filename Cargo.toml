@@ -20,6 +20,7 @@ sctk = { package = "smithay-client-toolkit", version = "0.20.0", features = [
     "calloop",
     "xkbcommon",
 ] }
+configurator_schema = { path = "../../configurator_schema" }
 
 [patch."https://github.com/pop-os/cosmic-protocols"]
 cctk = { package = "cosmic-client-toolkit", git = "https://github.com/pop-os//cosmic-protocols" }

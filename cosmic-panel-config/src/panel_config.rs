@@ -1,5 +1,6 @@
 //! Config for cosmic-panel
 
+use configurator_schema::rust_schema2;
 use std::{fmt::Display, ops::Range, str::FromStr, time::Duration};
 
 use anyhow::bail;
@@ -15,6 +16,7 @@ use crate::{NAME, VERSION};
 
 /// Edge to which the panel is anchored
 #[derive(Debug, Deserialize, Serialize, Copy, Clone, PartialEq, Eq)]
+#[derive(rust_schema2::RustSchema)]
 #[serde(deny_unknown_fields)]
 #[derive(Default)]
 pub enum PanelAnchor {
@@ -121,6 +123,7 @@ impl From<PanelAnchor> for Anchor {
 /// Configurable size for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[derive(rust_schema2::RustSchema)]
 pub enum PanelSize {
     /// XS
     XS,
@@ -268,6 +271,7 @@ impl FromStr for PanelSize {
 /// configurable backgrounds for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq)]
 #[serde(deny_unknown_fields)]
+#[derive(rust_schema2::RustSchema)]
 pub enum CosmicPanelBackground {
     /// theme default color with optional transparency
     ThemeDefault,
@@ -287,6 +291,7 @@ const fn _default_true() -> bool {
 /// configurable autohide behavior
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[derive(rust_schema2::RustSchema)]
 pub struct AutoHide {
     /// time in milliseconds without pointer focus before hiding
     pub wait_time: u32,
@@ -313,6 +318,7 @@ impl Default for AutoHide {
 /// Configuration for the panel's ouput
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
+#[derive(rust_schema2::RustSchema)]
 pub enum CosmicPanelOuput {
     /// show panel on all outputs
     All,
@@ -362,6 +368,7 @@ impl From<CosmicPanelOuput> for WrapperOutput {
 // TODO refactor to have separate dock mode config & panel mode config
 /// Config structure for the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Clone, CosmicConfigEntry)]
+#[derive(rust_schema2::RustSchema)]
 #[version = 1]
 #[serde(deny_unknown_fields)]
 pub struct CosmicPanelConfig {

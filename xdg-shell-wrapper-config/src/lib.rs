@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
+use configurator_schema::rust_schema2;
 use std::fmt;
 
 use serde::{Deserialize, Serialize};
@@ -7,6 +8,7 @@ use wayland_protocols_wlr::layer_shell::v1::client::{zwlr_layer_shell_v1, zwlr_l
 
 /// Layer which the cosmic panel is on
 #[derive(Debug, Deserialize, Serialize, Copy, Clone, PartialEq, Eq)]
+#[derive(rust_schema2::RustSchema)]
 pub enum Layer {
     /// background layer
     Background,
@@ -43,6 +45,7 @@ impl From<Layer> for zwlr_layer_shell_v1::Layer {
 
 /// Interactivity level of the cosmic panel
 #[derive(Debug, Deserialize, Serialize, Copy, Clone, PartialEq, Eq)]
+#[derive(rust_schema2::RustSchema)]
 pub enum KeyboardInteractivity {
     /// Not interactible
     None,

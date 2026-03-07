@@ -792,6 +792,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "configurator_schema"
+version = "0.1.0"
+dependencies = [
+ "configurator_utils",
+ "rust_schema2",
+ "serde_json",
+]
+
+[[package]]
+name = "configurator_utils"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+]
+
+[[package]]
 name = "core-foundation"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -951,6 +967,7 @@ name = "cosmic-panel-config"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "configurator_schema",
  "cosmic-config",
  "serde",
  "smithay-client-toolkit 0.20.0",
@@ -4117,6 +4134,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "rust_schema2"
+version = "0.1.0"
+dependencies = [
+ "rust_schema2_derive",
+ "serde",
+]
+
+[[package]]
+name = "rust_schema2_derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "serde_derive_internals",
+ "syn 2.0.106",
+]
+
+[[package]]
 name = "rustc-demangle"
 version = "0.1.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4252,6 +4287,17 @@ name = "serde_derive"
 version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.106",
+]
+
+[[package]]
+name = "serde_derive_internals"
+version = "0.29.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "18d26a20a969b9e3fdf2fc2d9f21eda6c40e2de84c9408bb5d3b05d499aae711"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6142,6 +6188,7 @@ checksum = "2fb433233f2df9344722454bc7e96465c9d03bff9d77c248f9e7523fe79585b5"
 name = "xdg-shell-wrapper-config"
 version = "0.1.0"
 dependencies = [
+ "configurator_schema",
  "serde",
  "wayland-protocols-wlr",
 ]
