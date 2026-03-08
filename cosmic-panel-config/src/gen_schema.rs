@@ -7,7 +7,7 @@ fn main() {
             .format(configurator_schema::ConfigFormat::CosmicRon)
             .source_home_path(&format!(".config/cosmic/{}/v{}", appid, version))
             .source_paths(&[format!("/usr/share/cosmic/{}/v{}", appid, version)])
-            .write_path(&format!("configurator/configurator/test_configs/{}", appid))
+            .write_path(&format!("test_configs/{}", appid))
             .generate::<CosmicPanelConfig>()
             .unwrap();
         std::fs::write(
